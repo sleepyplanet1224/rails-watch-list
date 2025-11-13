@@ -1,0 +1,15 @@
+<div class="container my-5">
+  <div class="px-5 py-3 my-3">
+    <h1 class="text-center semibold"><%= "🎬 Select the movie to add to #{@list.name}" %></h1>
+
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie, collection: Movie.all, include_blank: false %>
+      <%= f.input :comment %>
+      <%= f.submit("🤍 Add this movie to your #{@list.name}", class: 'btn btn-success') %>
+    <% end %>
+
+    <div class="mt-3">
+      <p><%= link_to "👈 Back to #{@list.name}", list_path(@list), class: 'btn btn-secondary' %></p>
+    </div>
+  </div>
+</div>

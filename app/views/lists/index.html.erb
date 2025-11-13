@@ -1,0 +1,11 @@
+<div class="container my-5">
+  <h1>Welcome to your movies list!</h1>
+
+  <p><%= link_to "➕ Create a new movie list here!", new_list_path, class: "text-decoration-none" %></p>
+
+  <% @lists.each do |list| %>
+    <ul>
+      <li><%= link_to "#{list.name}", list_path(list), class: "text-decoration-none" %></li>
+    </ul>
+  <% end %>
+</div>
