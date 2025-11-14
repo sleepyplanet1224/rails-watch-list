@@ -1,12 +1,19 @@
 <div class="container my-5">
   <h1>📋 <%= @list.name %></h1>
     <div>
-      <% @list.movies.each do |movie| %>
+      <% @list.bookmarks.each do |bookmark| %>
         <div>
-          <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
-          <p class="fw-light"><%= movie.rating %></p>
-          <h3 class="fw-semibold"><%= movie.title %></h3>
-          <p class="fw-light"><%= movie.overview %></p>
+          <% if @list.photo.attached? %>
+            <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <img src="https://plus.unsplash.com/premium_photo-1762518577411-27d3695b994b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <% end %>
+          <%= link_to list_bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete #{list.bookmark.title}? 🤔" } do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <p class="fw-light"><%= bookmark.movie.rating %></p>
+          <h3 class="fw-semibold"><%= bookmark.movie.title %></h3>
+          <p class="fw-light"><%= bookmark.movie.overview %></p>
         </div>
       <% end %>
     </div>
