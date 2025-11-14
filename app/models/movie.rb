@@ -3,5 +3,6 @@ class Movie < ApplicationRecord
   has_many :lists, through: :bookmarks
 
   # A movie must have a unique title and an overview.
-  validates :title, :overview, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: true
+  validates :overview, presence: true
 end

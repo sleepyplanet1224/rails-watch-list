@@ -5,7 +5,7 @@
     <%= simple_form_for [@list, @bookmark] do |f| %>
       <%= f.association :movie, collection: Movie.all, include_blank: false %>
       <%= f.input :comment %>
-      <%= f.submit("🤍 Add this movie to your #{@list.name}", class: 'btn btn-success') %>
+      <%= f.submit("🩷 Add this movie to your #{@list.name}", class: 'btn btn-success') %>
     <% end %>
 
     <div class="mt-3">
